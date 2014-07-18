@@ -21,3 +21,7 @@ _testmain.go
 
 *.exe
 *.test
+
+# godep
+Godeps/Readme
+Godeps/_workspace
