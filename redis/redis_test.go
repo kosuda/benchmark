@@ -8,11 +8,11 @@ const (
 	max = 100000
 )
 
-func BenchmarkClear(b *testing.B) {
-	b.ResetTimer()
+func TestClear(t *testing.T) {
+	Clear()
 
-	for i := 0; i < b.N; i++ {
-		Clear()
+	if !Empty() {
+		t.Error("Not be cleared")
 	}
 }
 
