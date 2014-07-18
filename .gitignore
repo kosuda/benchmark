@@ -25,3 +25,6 @@ _testmain.go
 # godep
 Godeps/Readme
 Godeps/_workspace
+
+# module
+vendor/
