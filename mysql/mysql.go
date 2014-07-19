@@ -2,7 +2,6 @@ package mysql
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
 	"log"
 )
 
@@ -28,6 +27,39 @@ func Write() {
 	_, err := con.Exec("INSERT INTO ranking (id,point) VALUES(?,?)", 1, 10)
 
 	if err != nil {
+		log.Fatal(err.Error())
+	}
+}
+
+// Remove function
+func Remove() {
+	_, err := con.Exec("DELETE FROM ranking WHERE id=?", 1)
+
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+}
+
+// Read function
+func Read() {
+	rows, err := con.Query("SELECT * FROM ranking")
+
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
+	for rows.Next() {
+		var id int
+		var point int
+
+		if err := rows.Scan(&id, &point); err != nil {
+			log.Fatal(err.Error())
+		}
+
+		log.Printf("%d is %d", id, point)
+	}
+
+	if err := rows.Err(); err != nil {
 		log.Fatal(err.Error())
 	}
 }
