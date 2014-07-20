@@ -2,6 +2,7 @@ package mysql
 
 import (
 	_ "github.com/go-sql-driver/mysql"
+	"math/rand"
 	"testing"
 )
 
@@ -9,10 +10,19 @@ func TestRemove(t *testing.T) {
 	Remove()
 }
 
-func TestWrite(t *testing.T) {
-	Write()
+func BenchmarkWrite(b *testing.B) {
+	b.ResetTimer()
+
+	for i := 1; i < b.N; i++ {
+		point := rand.Intn(100000000000)
+		Write(i, point)
+	}
 }
 
-func TestRead(t *testing.T) {
-	Read()
+func BenchmarkRead(b *testing.B) {
+	b.ResetTimer()
+
+	for i := 1; i < b.N; i++ {
+		Read(i)
+	}
 }

@@ -3,6 +3,7 @@ package mysql
 import (
 	"database/sql"
 	"log"
+	"os"
 )
 
 const (
@@ -14,7 +15,12 @@ const (
 var con *sql.DB
 
 func init() {
-	var err error
+	f, err := os.OpenFile("/tmp/test.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0660)
+	if err != nil {
+		log.Fatal("error opening file :", err.Error())
+	}
+	log.SetOutput(f)
+
 	con, err = sql.Open("mysql", user+":"+password+"@/"+database)
 
 	if err != nil {
@@ -23,8 +29,8 @@ func init() {
 }
 
 // Write function insert record
-func Write() {
-	_, err := con.Exec("INSERT INTO ranking (id,point) VALUES(?,?)", 1, 10)
+func Write(id int, point int) {
+	_, err := con.Exec("REPLACE INTO test (id, point) VALUES(?, ?)", id, point)
 
 	if err != nil {
 		log.Fatal(err.Error())
@@ -33,7 +39,7 @@ func Write() {
 
 // Remove function
 func Remove() {
-	_, err := con.Exec("DELETE FROM ranking WHERE id=?", 1)
+	_, err := con.Exec("DELETE FROM test")
 
 	if err != nil {
 		log.Fatal(err.Error())
@@ -41,22 +47,21 @@ func Remove() {
 }
 
 // Read function
-func Read() {
-	rows, err := con.Query("SELECT * FROM ranking")
+func Read(id int) {
+	rows, err := con.Query("SELECT point FROM test WHERE id=?", id)
 
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
 	for rows.Next() {
-		var id int
 		var point int
 
-		if err := rows.Scan(&id, &point); err != nil {
+		if err := rows.Scan(&point); err != nil {
 			log.Fatal(err.Error())
 		}
 
-		log.Printf("%d is %d", id, point)
+		log.Printf("point = %d", point)
 	}
 
 	if err := rows.Err(); err != nil {
