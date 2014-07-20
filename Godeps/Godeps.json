@@ -5,6 +5,11 @@
 		{
 			"ImportPath": "github.com/garyburd/redigo/redis",
 			"Rev": "6628c86d6a89ce7983c7c9b5e98c1df795fbd256"
+		},
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.2-1-g7094cf0",
+			"Rev": "7094cf0331ed6bde3cd75aa5d1da0e7764b526c9"
 		}
 	]
 }
