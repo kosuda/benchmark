@@ -14,6 +14,10 @@
 		{
 			"ImportPath": "github.com/lib/pq",
 			"Rev": "dffddbcda422b88507795533be131d05e1a3dc71"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-sqlite3",
+			"Rev": "9ac94b6fbfda6f25be5e3c17073aeed6de10428a"
 		}
 	]
 }
