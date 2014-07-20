@@ -1,7 +1,6 @@
 package main
 
 import (
-	_ "github.com/kosuda/benchmark/mysql"
-	_ "github.com/kosuda/benchmark/postgres"
-	_ "github.com/kosuda/benchmark/redis"
+	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 )
