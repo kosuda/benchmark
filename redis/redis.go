@@ -38,7 +38,7 @@ func Read(id int) {
 		log.Fatal(err.Error())
 	}
 
-	log.Printf("(id, point) = (%d, %d)", id, point)
+	log.Printf("(id, point) = (%d, %s)", id, point)
 }
 
 // Write function set records

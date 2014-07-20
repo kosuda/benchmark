@@ -5,9 +5,7 @@ import (
 	"testing"
 )
 
-const (
-	max = 100000
-)
+var maxID int
 
 func TestClear(t *testing.T) {
 	Clear()
@@ -20,16 +18,20 @@ func TestClear(t *testing.T) {
 func BenchmarkWrite(b *testing.B) {
 	b.ResetTimer()
 
-	for i := 0; i < b.N; i++ {
+	var id int
+	for id = 1; id < b.N; id++ {
 		point := rand.Intn(100000000000)
-		Write(i, point)
+		Write(id, point)
 	}
+
+	maxID = id
 }
 
 func BenchmarkRead(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		Read(i)
+		id := rand.Intn(maxID)
+		Read(id)
 	}
 }

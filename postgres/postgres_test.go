@@ -6,6 +6,8 @@ import (
 	"testing"
 )
 
+var maxID int
+
 func TestRemove(t *testing.T) {
 	Remove()
 }
@@ -13,16 +15,20 @@ func TestRemove(t *testing.T) {
 func BenchmarkWrite(b *testing.B) {
 	b.ResetTimer()
 
-	for i := 1; i < b.N; i++ {
+	var id int
+	for id = 1; id < b.N; id++ {
 		point := rand.Intn(100000000000)
-		Write(i, point)
+		Write(id, point)
 	}
+
+	maxID = id
 }
 
 func BenchmarkRead(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 1; i < b.N; i++ {
-		Read(i)
+		id := rand.Intn(maxID)
+		Read(id)
 	}
 }
