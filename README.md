@@ -7,12 +7,16 @@ Benchmark database using go language
 * go v1.3
 * redis server v2.8.12
 * mysql server v5.6.19
+* postgresql v9.3.4
+* sqlite3 v3.7.13
 * [zimbatm/direnv](https://github.com/zimbatm/direnv)
 * [tools/godep](https://github.com/tools/godep)
 
 ## deps
 * [garyburd/redigo](https://github.com/garyburd/redigo)
 * [go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
+* [lib/pq](https://github.com/lib/pq)
+* [mattn/go-sqlite3]( https://github.com/mattn/go-sqlite3)
 
 ## install
 ```
@@ -33,9 +37,9 @@ Godeps/    README.md  main.go    redis/     vendor/
 > cd redis
 > go test -bench=".*"
 PASS
-BenchmarkWrite     50000         73008 ns/op
-BenchmarkRead      10000        124248 ns/op
-ok      github.com/kosuda/benchmark/redis   5.731s
+BenchmarkWrite	   50000	     74234 ns/op
+BenchmarkRead	     10000	    122150 ns/op
+ok  	github.com/kosuda/benchmark/redis	5.761s
 ```
 
 ## mysql benchmark
@@ -43,7 +47,30 @@ ok      github.com/kosuda/benchmark/redis   5.731s
 ```
 > cd mysql
 > go test -bench=".*"
-BenchmarkWrite     10000        221457 ns/op
-BenchmarkRead       1000       1911617 ns/op
-ok      github.com/kosuda/benchmark/mysql   4.401s
+PASS
+BenchmarkWrite	   10000	    225284 ns/op
+BenchmarkRead	      1000	   1950978 ns/op
+ok  	github.com/kosuda/benchmark/mysql	4.480s
+```
+
+## postgres benchmark
+
+```
+> cd postgres
+> go test -bench=".*"
+PASS
+BenchmarkWrite	    5000	    425098 ns/op
+BenchmarkRead	     10000	    230049 ns/op
+ok  	github.com/kosuda/benchmark/postgres	4.581s
+```
+
+## sqlite3 benchmark
+
+```
+> cd sqlite3
+> go test -bench=".*"
+PASS
+BenchmarkWrite	     500	   5059931 ns/op
+BenchmarkRead	     20000	     77313 ns/op
+ok  	github.com/kosuda/benchmark/sqlite3	5.381s
 ```
