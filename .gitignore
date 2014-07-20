@@ -28,3 +28,6 @@ Godeps/_workspace
 
 # module
 vendor/
+
+# sqlite
+*.db
