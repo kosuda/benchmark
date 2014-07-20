@@ -1,6 +1,7 @@
 package redis
 
 import (
+	"math/rand"
 	"testing"
 )
 
@@ -20,7 +21,8 @@ func BenchmarkWrite(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		Write(max)
+		point := rand.Intn(100000000000)
+		Write(i, point)
 	}
 }
 
@@ -28,6 +30,6 @@ func BenchmarkRead(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		Read(max)
+		Read(i)
 	}
 }

@@ -3,8 +3,6 @@ package redis
 import (
 	"github.com/garyburd/redigo/redis"
 	"log"
-	"math"
-	"math/rand"
 	"os"
 )
 
@@ -33,41 +31,27 @@ func init() {
 }
 
 // Read all records
-func Read(max int) {
-	for i := 0; i < max; i++ {
-		score, err := redis.Float64(conn.Do("ZSCORE", "rank", i))
+func Read(id int) {
+	point, err := conn.Do("GET", id)
 
-		if err != nil {
-			log.Fatal(err.Error())
-		}
-
-		count, err := redis.Int(conn.Do("ZCOUNT", "rank", score+1.0, math.Inf(0)))
-
-		if err != nil {
-			log.Fatal(err.Error())
-		}
-
-		log.Printf("(id, rank) = (%d, %d)", i, count+1)
+	if err != nil {
+		log.Fatal(err.Error())
 	}
+
+	log.Printf("(id, point) = (%d, %d)", id, point)
 }
 
 // Write function set records
-func Write(max int) {
-	for i := 0; i < max; i++ {
-		value := rand.Intn(100000000000)
-		_, err := conn.Do("ZADD", "rank", value, i)
+func Write(id int, point int) {
+	_, err := conn.Do("SET", id, point)
 
-		if err != nil {
-			log.Fatal(err.Error())
-		}
-
-		log.Printf("key, value = (%d, %d)", i, value)
+	if err != nil {
+		log.Fatal(err.Error())
 	}
 }
 
 // Clear function implements flushall command.
 func Clear() {
-	log.Println("fulushall")
 	_, err := conn.Do("FLUSHALL")
 
 	if err != nil {
