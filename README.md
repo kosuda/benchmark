@@ -29,11 +29,19 @@ Godeps/    README.md  main.go    redis/     vendor/
 
 ```
 > cd redis
-> go test -bench=".*"
+> go test -bench=".*"                                                    (git)-[master]
 PASS
-BenchmarkWrite	       1	5386683873 ns/op
-BenchmarkRead	       1	9801904162 ns/op
-ok  	github.com/kosuda/benchmark/redis	15.204s
+BenchmarkWrite     50000         73008 ns/op
+BenchmarkRead      10000        124248 ns/op
+ok      github.com/kosuda/benchmark/redis   5.731s
 ```
 
 ## mysql benchmark
+
+```
+> cd mysql
+> go test -bench=".*"                                                    (git)-[master]
+BenchmarkWrite     10000        221457 ns/op
+BenchmarkRead       1000       1911617 ns/op
+ok      github.com/kosuda/benchmark/mysql   4.401s
+```
