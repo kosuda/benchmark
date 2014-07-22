@@ -74,3 +74,14 @@ BenchmarkWrite	     500	   5059931 ns/op
 BenchmarkRead	     20000	     77313 ns/op
 ok  	github.com/kosuda/benchmark/sqlite3	5.381s
 ```
+
+## mongo benchmark
+
+```
+> cd mongo
+> go test -bench=".*"
+PASS
+BenchmarkWrite	   10000	    136282 ns/op
+BenchmarkRead	   10000	    130698 ns/op
+ok  	github.com/kosuda/benchmark/mongo	2.734s
+```
