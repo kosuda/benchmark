@@ -8,7 +8,9 @@ import (
 var maxID int
 
 func TestRemove(t *testing.T) {
-	Remove()
+	if !IsEmpty() {
+		Remove()
+	}
 
 	if !IsEmpty() {
 		t.Error("not be cleard")
