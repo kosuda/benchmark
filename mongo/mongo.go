@@ -1,6 +1,7 @@
 package mongo
 
 import (
+	"github.com/kosuda/benchmark/config"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
 	"log"
@@ -8,10 +9,6 @@ import (
 )
 
 var session *mgo.Session
-
-const (
-	url = "localhost"
-)
 
 // Data is result structure
 type Data struct {
@@ -28,7 +25,9 @@ func init() {
 
 	log.SetOutput(f)
 
-	session, err = mgo.Dial(url)
+	mgoConf := config.Configuration.Mongo
+
+	session, err = mgo.Dial(mgoConf.Host)
 
 	if err != nil {
 		log.Fatal("error connect mongo:", err.Error())

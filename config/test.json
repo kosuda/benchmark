@@ -1,0 +1,29 @@
+{
+  "common": {
+    "log": {
+      "path": "/tmp/test.log"
+    }
+  },
+  "mysql": {
+    "user": "kosuda",
+    "password": "",
+    "dbname": "test"
+  },
+  "postgres": {
+    "user": "kosuda",
+    "password": "",
+    "dbname": "postgres"
+  },
+  "sqlite3": {
+    "dbpath": "./test.db"
+  },
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "dbname": "test"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  }
+}
