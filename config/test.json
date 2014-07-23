@@ -19,8 +19,7 @@
   },
   "mongo": {
     "host": "localhost",
-    "port": 27017,
-    "dbname": "test"
+    "port": 27017
   },
   "redis": {
     "host": "localhost",

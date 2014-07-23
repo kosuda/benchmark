@@ -6,6 +6,7 @@ import (
 	"labix.org/v2/mgo/bson"
 	"log"
 	"os"
+	"strconv"
 )
 
 var session *mgo.Session
@@ -25,9 +26,9 @@ func init() {
 
 	log.SetOutput(f)
 
-	mgoConf := config.Configuration.Mongo
+	c := config.Configuration.Mongo
 
-	session, err = mgo.Dial(mgoConf.Host)
+	session, err = mgo.Dial("mongodb://" + c.Host + ":" + strconv.Itoa(c.Port))
 
 	if err != nil {
 		log.Fatal("error connect mongo:", err.Error())

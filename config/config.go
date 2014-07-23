@@ -4,10 +4,12 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"path/filepath"
+	"runtime"
 )
 
 const (
-	filepath = "./test.json"
+	filename = "test.json"
 )
 
 type logConf struct {
@@ -35,9 +37,8 @@ type sqlite3Conf struct {
 }
 
 type mongoConf struct {
-	Host   string
-	Port   int
-	Dbname string
+	Host string
+	Port int
 }
 
 type redisConf struct {
@@ -59,7 +60,8 @@ type Conf struct {
 var Configuration Conf
 
 func init() {
-	jsonStr, err := ioutil.ReadFile(filepath)
+	_, selfname, _, _ := runtime.Caller(0)
+	jsonStr, err := ioutil.ReadFile(filepath.Join(filepath.Dir(selfname), filename))
 
 	if err != nil {
 		log.Fatal(err.Error())
