@@ -1,6 +1,9 @@
 {
 	"ImportPath": "github.com/kosuda/benchmark",
 	"GoVersion": "go1.3",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/garyburd/redigo/redis",
@@ -13,7 +16,7 @@
 		},
 		{
 			"ImportPath": "github.com/lib/pq",
-			"Rev": "dffddbcda422b88507795533be131d05e1a3dc71"
+			"Rev": "960f4898d8d3ee5e1f47a8422e9b23ac7bab129b"
 		},
 		{
 			"ImportPath": "github.com/mattn/go-sqlite3",

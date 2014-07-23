@@ -10,7 +10,7 @@ import (
 const (
 	user     = "kosuda"
 	password = ""
-	database = "postgres"
+	database = "test"
 )
 
 var con *sql.DB
