@@ -60,6 +60,7 @@ type Conf struct {
 var Configuration Conf
 
 func init() {
+	// FIXME test時にカバレッジ取得しようとするとパスがおかしくなる
 	_, selfname, _, _ := runtime.Caller(0)
 	jsonStr, err := ioutil.ReadFile(filepath.Join(filepath.Dir(selfname), filename))
 
