@@ -1,6 +1,6 @@
 box: wercker/golang
 # Services
-services:
+#services:
 # Build definition
 build:
   # The steps that will be executed on build
