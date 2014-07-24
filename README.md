@@ -1,5 +1,6 @@
 benchmark
 =========
+[![wercker status](https://app.wercker.com/status/4c82a8af8c2a95e21c589fdc380a7adb/m "wercker status")](https://app.wercker.com/project/bykey/4c82a8af8c2a95e21c589fdc380a7adb)
 
 Benchmark database using go language
 
