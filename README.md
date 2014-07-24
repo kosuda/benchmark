@@ -25,64 +25,9 @@ Benchmark database using go language
 
 > cd $GOPATH/src/github.com/kosuda/benchmark (OR ghq look benchmark)
 
-> godep get
+> godep restore
 
 > ls
-Godeps/    README.md  main.go    redis/     vendor/
+Godeps/    README.md  main.go    redis/     _vendor/
 
-```
-
-## redis benchmark
-
-```
-> cd redis
-> go test -bench=".*"
-PASS
-BenchmarkWrite	   50000	     74234 ns/op
-BenchmarkRead	     10000	    122150 ns/op
-ok  	github.com/kosuda/benchmark/redis	5.761s
-```
-
-## mysql benchmark
-
-```
-> cd mysql
-> go test -bench=".*"
-PASS
-BenchmarkWrite	   10000	    225284 ns/op
-BenchmarkRead	      1000	   1950978 ns/op
-ok  	github.com/kosuda/benchmark/mysql	4.480s
-```
-
-## postgres benchmark
-
-```
-> cd postgres
-> go test -bench=".*"
-PASS
-BenchmarkWrite	    5000	    425098 ns/op
-BenchmarkRead	     10000	    230049 ns/op
-ok  	github.com/kosuda/benchmark/postgres	4.581s
-```
-
-## sqlite3 benchmark
-
-```
-> cd sqlite3
-> go test -bench=".*"
-PASS
-BenchmarkWrite	     500	   5059931 ns/op
-BenchmarkRead	     20000	     77313 ns/op
-ok  	github.com/kosuda/benchmark/sqlite3	5.381s
-```
-
-## mongo benchmark
-
-```
-> cd mongo
-> go test -bench=".*"
-PASS
-BenchmarkWrite	   10000	    136282 ns/op
-BenchmarkRead	   10000	    130698 ns/op
-ok  	github.com/kosuda/benchmark/mongo	2.734s
 ```
