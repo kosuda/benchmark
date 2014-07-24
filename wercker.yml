@@ -16,7 +16,6 @@ build:
           cd $WERCKER_SOURCE_DIR
           go version
           go get -v github.com/tools/godep
-
           godep restore
 
     # Build the project
