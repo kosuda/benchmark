@@ -27,7 +27,7 @@ Godeps/Readme
 Godeps/_workspace
 
 # module
-vendor/
+_vendor/
 
 # sqlite
 *.db
